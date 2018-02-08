@@ -6,13 +6,11 @@
   </title>
   <body>
     
-    <canvas height="500" width="300" style="border:2px solid black;" id="slate">
+    <canvas height="500" width="500" style="border:2px solid black;" id="slate">
 
     </canvas>
     <button id="clear">clear</button>
-    <button id="startB">start</button>
-    <button id="stop">stop</button>
-    <button id="office"> office </button>
+    <button id="toggle">toggle</button>
   </body>
   <script type="text/javascript" src = "canvas.js"></script>
 </head>
