@@ -9,31 +9,39 @@ var clears = function() {
 }
 
 var cbutton = clear.addEventListener("click", clears);
+clear.addEventListener("click",stops);
 
-
-var animate() {
-    var requestID;
+var requestID;
+var r = 1;
+var direction = 1;
+var animate = function(e) {
     var x=250;
-    var y=250;
-    var r = 0;
-    var direction = 1;
-    var circle = function(){
-	clears();
-	ctx.beginPath();
-	ctx.arc(x,y,r,0, 2*Math.PI)
-	if(r>=250){
+    var y=250; 
+   
+    var draw = function(){
+	if(r>=250 || r<=0){
 	    direction=direction*-1;
 	}
 	r=r+direction;
+	clears();
+	ctx.beginPath();
+	ctx.arc(x,y,r,0, 2*Math.PI)
+
 	ctx.stroke();      
 	requestID =window.requestAnimationFrame(animate);
 	console.log(requestID);
     }
+    window.requestAnimationFrame(draw);
 
-    slate.addEventListener("click", draw);
+  
 }
-window.requestAnimationFrame(animate);
+var start = function(){
+    window.requestAnimationFrame(animate);
+}
+startB.addEventListener("click",start);
 var stops = function(e) {
-    window.cancelAnimationFrame(animate);
+    window.cancelAnimationFrame(requestID);
+    
 }
-stop.addEventListener("click",stops)
+var stop = document.getElementById("stop");
+stop.addEventListener("click",stops);
